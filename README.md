@@ -1,4 +1,4 @@
-# EngineSnippet
+# Repositorio de Funciones Reutilizables Kata Suite
 
 El presente repositorio cuenta con ejemplos de codigos reutilizables para el area de onboarding se encuentra divido de la siguiente forma
 
