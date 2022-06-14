@@ -1,6 +1,6 @@
 # Ejemplo de una función de cambio de estado
 
-El ejemplo del archivo FuncionCambioEstado.js es una estructura del cambio de estado la cual tiene las siguientes caracteristicas.
+El ejemplo del archivo [FuncionCambioEstado.js](FuncionCambioEstado.js) es una estructura del cambio de estado la cual tiene las siguientes caracteristicas.
 
 * Estructura general de una función de cambio de estado
 * Secciones para definir constantes y variables.
