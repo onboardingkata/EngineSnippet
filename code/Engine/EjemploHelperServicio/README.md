@@ -1,6 +1,6 @@
 # Ejemplo de una función para consumir servicios
 
-El ejemplo del archivo HelperMakeRequestAsync.js es una función que implementa el helper service.MakeRequestAsync para hacer una llamada de servicios, el ejemplo cuenta con las buenas practicas recomendadas en el area de Onboarding, cuenta con las siguientes caracteristicas.
+El ejemplo del archivo [HelperMakeRequestAsync.js](HelperMakeRequestAsync.js) es una función que implementa el helper service.MakeRequestAsync para hacer una llamada de servicios, el ejemplo cuenta con las buenas practicas recomendadas en el area de Onboarding, cuenta con las siguientes caracteristicas.
 
 * Funciona para cualquier tipo de Metodo (GET, POST, PUT)
 * Cuenta con loggin para guardar los parametros de entrada y salida.
