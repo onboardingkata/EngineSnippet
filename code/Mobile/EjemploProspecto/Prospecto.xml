@@ -1,0 +1,1132 @@
+<XFA
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" noNamespaceSchemaLocation="XFA.xsd">
+    <Template Name="NombreFormulario" Version="1.0" Caption="DescripcionNombreFormulario">
+        <FormiikExpressionLanguage>
+            <variables>
+				<!--Variables para utilizar las condiciones y puedan fucnionar correctamente -->
+				<var key="VartipoIdentificacionProspecto" keyForSave="tipoIdentificacionProspecto" type="string" />	
+				<var key="VarvigenciaProspecto" keyForSave="vigenciaProspecto" type="string" />
+				<var key="VargeneroProspecto" keyForSave="generoProspecto" type="string" />
+				<var key="VarclaveElectorProspecto" keyForSave="claveElectorProspecto" type="string" />
+				<var key="VarEscaneoCedula_PrimerNombre" keyForSave="IdReaderNombre_TextEdit7" type="string" />
+                <var key="VarEscaneoCedula_PrimerApellido" keyForSave="IdReaderPrimerApellido_TextEdit88" type="string" />
+                <var key="VarEscaneoCedula_SegundoApellido" keyForSave="IdReaderSegundoApellido_TextEdit99" type="string" />
+                <var key="VarEscaneoCedula_Nacimiento" keyForSave="IdReaderFechaNacimiento_TextEdit10" type="string" />
+                <var key="VarEscaneoCedula_Sexo" keyForSave="IdReaderSexo_TextEdit5" type="string" />
+                <var key="VarEscaneoCedula_Vigencia" keyForSave="IdReaderVigencia_TextEdit4" type="string" />
+                <var key="VarEscaneoCedula_Nacionalidad" keyForSave="IdReaderNacionalidad_TextEdit6" type="string" />			
+                <var key="VarfechaNacimientoProspecto" keyForSave="fechaNacimientoProspecto" type="string" />
+                <var key="VarfechaActual" keyForSave="fechaActual" type="string" />
+				<var key="VarGuardarFinal" keyForSave="GuardarFinalProspecto" type="string" />
+				<var key="VarAlertaConectorEngine" keyForSave="AlertaConectorEngine" type="string" />
+				<var key="VarRespuestaConectorEngine" keyForSave="RespuestaConectorEngine" type="string" />
+				<var key="VarCambiarProspecto" keyForSave="CambiarProspecto" type="string" />
+				<var key="VarConfirmacionCambiarProspecto" keyForSave="ConfirmacionCambiarProspecto" type="string" />
+				<var key="VarLimpiadaInformacionProspecto" keyForSave="LimpiadaInformacionProspecto" type="string" />
+				<var key="VarIgnoradaLimpiezaInformacionProspecto" keyForSave="IgnoradaLimpiezaInformacionProspecto" type="string" />
+				<var key="VarfechaModificacionBienestar" keyForSave="fechaModificacionBienestar" type="string" />						
+            </variables>
+            <behaviors>
+				<!--Behavios que contiene lo que debe ejecutar despues de cumplir las validaciones -->
+				<behavior key="MostrarConsultasCamposINE">
+					<widget keyForSave="escanearINE" visible="true" />
+                </behavior>
+                <behavior key="OcultarConsultasCamposINE">
+                    <widget keyForSave="escanearINE" visible="false" />
+                </behavior>
+				<!-- Aplica V.1. -->				
+				<behavior key="LlenarPrimerNombre">
+                    <widget keyForSave="nombreProspecto" value="#{VarEscaneoCedula_PrimerNombre}" />
+                </behavior>	
+				<!-- Aplica V.2. -->
+				<behavior key="LlenarPrimerApellido">
+                    <widget keyForSave="apellidoPaternoProspecto" value="#{VarEscaneoCedula_PrimerApellido}" />
+                </behavior>		
+				<!-- Aplica V.3. -->			
+				<behavior key="LlenarSegundoApellido">
+                    <widget keyForSave="apellidoMaternoProspecto" value="#{VarEscaneoCedula_SegundoApellido}" />
+                </behavior>		
+				<!-- Aplica V.8. -->			
+				<behavior key="LimpiarPrimerNombre">
+                    <widget keyForSave="IdReaderNombre_TextEdit7" value="" />
+                </behavior>		
+				<!-- Aplica V.9. -->
+				<behavior key="LimpiarPrimerApellido">
+                    <widget keyForSave="IdReaderPrimerApellido_TextEdit88" value="" />
+                </behavior>			
+				<!-- Aplica V.10. -->		
+				<behavior key="LimpiarSegundoApellido">
+                    <widget keyForSave="IdReaderSegundoApellido_TextEdit99" value="" />
+                </behavior>		
+				<!-- Aplica V.7. -->			
+				<behavior key="LlenarVigencia">
+                    <widget keyForSave="vigenciaProspecto" value="#{ExpVigenciaProspecto}" />
+                    <widget keyForSave="IdReaderVigencia_TextEdit4" value="" />
+                </behavior>	
+				<!-- Actualizar Fecha de nacimiento  -->	
+				<!-- Aplica V.14. -->
+                <behavior key="ActualizarFechaNacimiento">
+                    <widget keyForSave="fechaNacimientoProspecto" value="#{ExpFechaNacimiento}" />
+                    <widget keyForSave="IdReaderFechaNacimiento_TextEdit10" value="" />
+                </behavior>	
+				<!-- Aplica V.15. -->
+				<behavior key="ActualizarMujerProspecto">
+                    <widget keyForSave="generoProspecto" value="MUJER" />
+                    <widget keyForSave="IdReaderSexo_TextEdit5" value="" />
+                </behavior>	
+				<!-- Aplica V.15. -->
+				<behavior key="ActualizarHombreProspecto">
+                    <widget keyForSave="generoProspecto" value="HOMBRE" />
+                    <widget keyForSave="IdReaderSexo_TextEdit5" value="" />
+                </behavior>		
+				<!-- Aplica V.16. -->			
+				<behavior key="ActualizarMexicoProspecto">
+                    <widget keyForSave="paisNacimientoProspecto" value="MEXICO" />
+                    <widget keyForSave="IdReaderNacionalidad_TextEdit6" value="" />
+                </behavior>		
+				<!-- Aplica V.27. -->
+				<behavior key="MostrarAlertaConectorEngine">
+                    <widget keyForSave="AlertaConectorEngine" value="''" visible="true" />
+                </behavior>	
+				<!-- Aplica V.27. -->
+				<behavior key="OcultarAlertaConectorEngine">
+                    <widget keyForSave="AlertaConectorEngine" value="''" visible="false" />
+                </behavior>	
+				<!-- Aplica V.28. -->
+                <behavior key="DeseleccionarAlertaConectorEngine">
+                    <widget keyForSave="AlertaConectorEngine" value="''" />
+                </behavior>
+				<!-- Cambiar Prospecto -->	
+				<!-- Aplica V.29. -->
+				<behavior key="MostrarConfirmacionCambiarProspecto">
+					<widget keyForSave="ConfirmacionCambiarProspecto" visible="true" />
+				</behavior>	
+				<!-- Aplica V.29. -->
+				<behavior key="OcultarConfirmacionCambiarProspecto">
+					<widget keyForSave="ConfirmacionCambiarProspecto" visible="false" />
+				</behavior>
+				<!-- limpieza de info del Prospecto -->	
+				<!-- Aplica V.30. -->
+				<behavior key="LimpiarInformacionProspecto">
+					<widget keyForSave="Engine_Message_prospecto" value="''" />
+					<widget keyForSave="identificacionCurpProspecto" readonly="false" />
+					<widget keyForSave="GuardarFinalProspecto" readonly="false" />
+				    <widget keyForSave="CambiarProspecto" value="false" />
+					<widget keyForSave="IgnoradaLimpiezaInformacionProspecto" value="" />
+					<widget keyForSave="LimpiadaInformacionProspecto" value="''" />
+					<widget keyForSave="ConfirmacionCambiarProspecto" visible="false" value="''" />
+				</behavior>
+				<!-- ignorar la limpieza de info del Prospecto -->	
+				<!-- Aplica V.31. -->
+				<behavior key="IgnorarLimpiezaInformacionProspecto">
+					<widget keyForSave="IgnoradaLimpiezaInformacionProspecto" value="Ignorada" />
+					<widget keyForSave="LimpiadaInformacionProspecto" value="" />
+					<widget keyForSave="ConfirmacionCambiarProspecto" visible="false" />
+				</behavior>
+            </behaviors>
+            <expressions>																	
+				<!--Expresiones donde se cuenta con las validaciones a cumplir -->
+				<!-- V.1. valida si el campo EscaneoCedula_PrimerNombre contiene informacion escaneada, el cual hace uso de la función length (solo fucniona con string) para saber si tiene información La variable String-->
+                <exp key="ExpLlenarPrimerNombre" value="if( 
+				(length(#{VarEscaneoCedula_PrimerNombre}) &gt; 0)    
+				, behavior('LlenarPrimerNombre')                                                                                           
+				)" />
+				<!-- V.2. valida si el campo EscaneoCedula_PrimerApellido contiene informacion escaneada, el cual hace uso de la función length (solo fucniona con string) para saber si tiene información La variable String -->
+				<exp key="ExpLlenarPrimerApellido" value="if( 
+				(length(#{VarEscaneoCedula_PrimerApellido}) &gt; 0)    
+				, behavior('LlenarPrimerApellido')                                                                                           
+				)" />
+				<!-- V.3.  Valida si el campo EscaneoCedula_SegundoApellido contiene informacion escaneada, el cual hace uso de la función length (solo fucniona con string) para saber si tiene información La variable String-->
+				<exp key="ExpLlenarSegundoApellido" value="if( 
+				(length(#{VarEscaneoCedula_SegundoApellido}) &gt; 0)    
+				, behavior('LlenarSegundoApellido')                                                                                           
+				)" />
+				<!-- Convertir la fecha obtenida del escaner a formato comprensible por el formulario, ya que, el formato del campo es dd/mm/yyyy -->
+				<!-- V.4. Con lo escaneado sacamos la parte que identifica el año y utilizamos la funcion substring -->
+                <exp key="ExpConcatenarAniosVigencia" value="substring(#{VarEscaneoCedula_Vigencia}, 0, 2)" />
+				<!-- V.5. Como el escaner solo carga dos digitos para el año debemos completar la cantidad de 4 digitos para el año -->
+				<exp key="ExpAnioVigenciaProspecto" value="switch(      
+																		case(
+																		    !equals(#{ExpConcatenarAniosVigencia},'')
+																		     , '20'
+																			 )
+																       , default(
+																			 ''
+																			)																			
+																		)" />
+				<!-- V.6. en esta parte concatenamos la información para poder convertir a formato que lo necesita el formulario -->
+				<exp key="ExpVigenciaProspecto" value="concat(substring(#{VarEscaneoCedula_Vigencia}, 4, 6),'/',substring(#{VarEscaneoCedula_Vigencia}, 2, 4),'/',#{ExpAnioVigenciaProspecto},'',substring(#{VarEscaneoCedula_Vigencia}, 0, 2))" />
+                <!-- V.7. si cumple y tiene información el campo EscaneoCedula_Vigencia del escaner, cargamos la información en el campo vigenciaProspecto -->
+				<exp key="ExpActualizarVigenciaCliente" value="if(!equals(#{VarEscaneoCedula_Vigencia},''), behavior('LlenarVigencia'))" />	
+				<!-- V.8. valida si el campo nombreProspecto se cargó del campo del escaner y limpiamos el campo del escaner -->
+				<exp key="ExpLlenarPrimerNombreCampo" value="if( 
+				(length(#{VarnombreProspecto}) &gt; 0) 
+				&amp;&amp;
+				(length(#{VarEscaneoCedula_PrimerNombre}) &gt; 0)   
+				, behavior('LimpiarPrimerNombre')                                                                                           
+				)" />
+				<!-- V.9. valida si el campo apellidoPaternoProspecto se cargó del campo del escaner y limpiamos el campo del escaner -->
+				<exp key="ExpLlenarPrimerApellidoCampo" value="if( 
+				(length(#{VarapellidoPaternoProspecto}) &gt; 0)
+				&amp;&amp;
+				(length(#{VarEscaneoCedula_PrimerApellido}) &gt; 0) 
+				, behavior('LimpiarPrimerApellido')                                                                                           
+				)" />
+				<!-- V.10. valida si el campo apellidoMaternoProspecto se cargó del campo del escaner y limpiamos el campo del escaner -->
+				<exp key="ExpLlenarSegundoApellidoCampo" value="if( 
+				(length(#{VarapellidoMaternoProspecto}) &gt; 0)
+				&amp;&amp;
+				(length(#{VarEscaneoCedula_SegundoApellido}) &gt; 0) 
+				, behavior('LimpiarSegundoApellido')                                                                                           
+				)" />
+                <!-- Convierte la fecha obtenida del escaner a formato comprensible por el formulario -->
+				<!-- V.11. Con lo escaneado sacamos la parte que identifica el año y utilizamos la funcion substring -->
+                <exp key="ExpConcatenarAnios" value="substring(#{VarEscaneoCedula_Nacimiento}, 0, 2)" />
+				<!-- V.12. Como el escaner solo carga dos digitos para el año debemos completar la cantidad de 4 digitos para el año -->
+				<exp key="ExpAnioNacimientoProspecto" value="switch(      
+																		case(
+																		    equals(#{ExpConcatenarAnios},'00')
+																			||
+																			equals(#{ExpConcatenarAnios},'01')
+																			||
+																			equals(#{ExpConcatenarAnios},'02')
+																			||
+																			equals(#{ExpConcatenarAnios},'03')
+																			||
+																			equals(#{ExpConcatenarAnios},'04')
+																			||
+																			equals(#{ExpConcatenarAnios},'05')
+																			||
+																			equals(#{ExpConcatenarAnios},'06')
+																			||
+																			equals(#{ExpConcatenarAnios},'07')
+																			||
+																			equals(#{ExpConcatenarAnios},'08')
+																			||
+																			equals(#{ExpConcatenarAnios},'09')
+																			||
+																			equals(#{ExpConcatenarAnios},'10')
+																			||
+																			equals(#{ExpConcatenarAnios},'11')
+																			||
+																			equals(#{ExpConcatenarAnios},'12')
+																			||
+																			equals(#{ExpConcatenarAnios},'13')
+																			||
+																			equals(#{ExpConcatenarAnios},'14')
+																			||
+																			equals(#{ExpConcatenarAnios},'15')
+																			||
+																			equals(#{ExpConcatenarAnios},'16')
+																			||
+																			equals(#{ExpConcatenarAnios},'17')
+																			||
+																			equals(#{ExpConcatenarAnios},'18')
+																			||
+																			equals(#{ExpConcatenarAnios},'19')
+																			||
+																			equals(#{ExpConcatenarAnios},'20')
+																			||
+																			equals(#{ExpConcatenarAnios},'21')
+																		     , '20'
+																			 )
+																       , default(
+																			 '19'
+																			)																			
+																		)" />
+				<!-- V.13. en esta parte concatenamos la información para poder convertir a formato que lo necesita el formulario -->
+				<exp key="ExpFechaNacimiento" value="concat(substring(#{VarEscaneoCedula_Nacimiento}, 4, 6),'/',substring(#{VarEscaneoCedula_Nacimiento}, 2, 4),'/',#{ExpAnioNacimientoProspecto},'',substring(#{VarEscaneoCedula_Nacimiento}, 0, 2))" />
+                <!-- V.14. si cumple y tiene información el campo EscaneoCedula_Vigencia del escaner, cargamos la información en el campo vigenciaProspecto -->
+				<exp key="ExpActualizarFechaNacimientoCliente" value="if(!equals(#{VarEscaneoCedula_Nacimiento},''), behavior('ActualizarFechaNacimiento'))" />				
+				<!-- V.15. Como el escaner envia una información diferente a la que contiene el catalogo esta validación pueden aplicar -->
+				<exp key="ExpActualizarSexoProspecto" value="switch(      
+																		case(
+																		    equals(#{VarEscaneoCedula_Sexo},'M')
+																		     , behavior('ActualizarMujerProspecto')
+																			 )
+																       , case(
+																			 equals(#{VarEscaneoCedula_Sexo},'H')
+																		    , behavior('ActualizarHombreProspecto')
+																			)																			
+																		)" />
+				<!-- V.16. Como el escaner envia una información diferente a la que contiene el catalogo esta validación pueden aplicar -->
+				<exp key="ExpActualizarPaisProspecto" value="if(      
+																   equalsIgnoreCase(#{VarEscaneoCedula_Nacionalidad}, 'MEX')
+																	,behavior('ActualizarMexicoProspecto')       
+																)" />														
+				<!-- V.17. sacamos el external id para poder realizar las validaciones que deseamos con ese dato-->
+				<exp key="ExpExternalId" value="#{ExternalId}" />
+				<!-- V.18. validacion para mostrar el botón de escaner de tipo de Identificación -->
+                <exp key="ExpVisualizacionConsultasCamposINE" value="if(      
+																		equalsIgnoreCase(#{VartipoIdentificacionProspecto}, 'CREDENCIAL DE ELECTOR')
+																		,behavior('MostrarConsultasCamposINE')      
+																		,behavior('OcultarConsultasCamposINE')       
+																		)" />
+				<!-- Calculo edad entre dos fechas en formato dd/MM/yyyy-->
+				<!-- V.19. con la fecha que deseamos validar sacamos los 4 digitos del año, esto aplica para el formato dd/MM/yyyy -->
+                <exp key="ExpAnioNacimiento" value="toNumber(
+														substring(#{VarfechaNacimientoProspecto}, 6, 10)
+														)" />
+                <!-- V.20. con la fecha que deseamos validar sacamos los 2 digitos del mes, esto aplica para el formato dd/MM/yyyy -->
+				<exp key="ExpMesNacimiento" value="toNumber(
+														substring(#{VarfechaNacimientoProspecto}, 3, 5)
+														)" />
+                <!-- V.21. con la fecha que deseamos validar sacamos los 2 digitos del día, esto aplica para el formato dd/MM/yyyy -->
+				<exp key="ExpDiaNacimiento" value="toNumber(
+															substring(#{VarfechaNacimientoProspecto}, 0, 2)
+															)" />
+				<!-- V.22. con la fecha actual del sistema que deseamos validar sacamos los 4 digitos del año, esto aplica para el formato dd/MM/yyyy -->
+				<exp key="ExpAnioActual" value="toNumber(
+														substring(#{VarfechaActual}, 6, 10)
+														)" />
+                <!-- V.23. con la fecha actual del sistema que deseamos validar sacamos los 2 digitos del mes, esto aplica para el formato dd/MM/yyyy -->
+				<exp key="ExpMesActual" value="toNumber(
+														substring(#{VarfechaActual}, 3, 5)
+														)" />
+                <!-- V.24. con la fecha actual del sistema que deseamos validar sacamos los 2 digitos del día, esto aplica para el formato dd/MM/yyyy -->
+				<exp key="ExpDiaActual" value="toNumber(
+														substring(#{VarfechaActual}, 0, 2)
+														)" />
+                <!-- V.25. esta validación lo que hace es calcular los años de diferencia entre dos fechas -->
+				<exp key="ExpEdad" value="switch(      
+												case(       
+													#{ExpMesNacimiento} &lt; 
+													#{ExpMesActual}        
+													,#{ExpAnioActual} - #{ExpAnioNacimiento}      
+												)      
+												,case(       
+													#{ExpMesNacimiento} &gt; 
+													#{ExpMesActual}        
+													,#{ExpAnioActual} - 
+													#{ExpAnioNacimiento}      
+												)      
+												,case(       
+													(
+														#{ExpMesNacimiento} == #{ExpMesActual}
+													)       
+												&amp;&amp;       
+														(
+															#{ExpDiaActual} &lt;#{ExpDiaNacimiento}
+														)        
+												,floor(
+													#{ExpAnioActual} - 
+													#{ExpAnioNacimiento}
+												)      
+												)      
+												,case(       
+													(
+														#{ExpMesNacimiento} == #{ExpMesActual}
+													)        
+												&amp;&amp;       
+													(
+														#{ExpDiaActual} &gt;= #{ExpDiaNacimiento}
+													)        
+													,#{ExpAnioActual} - 
+													#{ExpAnioNacimiento}      
+												)      
+													,default(0)      
+												)" />												
+				<!-- validación para identificar si el flexible no tiene error de conexión con Resuesta log Flexibles -->
+				<!-- V.26. con la respuesta del log identificamos si existe como ultima respuesta la palabra Exitoso y con esta respuesta obligamos si debe presionar nuevamente el boton de servicio hasta que sea exitoso -->
+                <exp key="ExpTmnUnoAA" value="if(equals(#{VarGuardarFinal}, ''), 0, lastIndexOf(#{VarGuardarFinal}, 'Exitoso', length(#{VarGuardarFinal})) )" />
+				<exp key="ExpTmnUnoA" value="(#{ExpTmnUnoAA})" />
+                <exp key="ExpTmnDosA" value="(#{ExpTmnUnoAA} + 7)" />
+				<exp key="ExpRespuestaConectorEngine" value="if((#{ExpTmnUnoAA} &gt; 0), substring(#{VarGuardarFinal}, #{ExpTmnUnoA}, #{ExpTmnDosA}), '')" />
+				<!-- V.27. validaciones alertas Flexibles lo que hace es mostrar la alerta obligatoria o no  -->
+                <exp key="ExpMostrarAlertaFlexibles" value="switch(   
+				case(                                                   
+				(                    
+				equalsIgnoreCase(#{VarRespuestaConectorEngine}, '')                    
+				)                    
+				, behavior('MostrarAlertaConectorEngine')                                         
+				)                    
+				, default(                     
+				behavior('OcultarAlertaConectorEngine')                     
+				)                    
+				)" />
+                <!-- V.28. validamos que solo sea no obligatorio si la consulta del servicio es exitoso de lo contrario lo coloca obligatorio-->
+				<exp key="ExpEvitarSeleccionAlertaNotAvaEtaTres" value="if(                         equals(#{VarAlertaConectorEngine},'true')                          ,behavior('DeseleccionarAlertaConectorEngine')                         )" />
+				<!-- Validación Autorizacion Editar prospecto -->
+                <!-- V.29. Cambiar prospecto -->
+				<exp key="ExpCambiarProspecto" value="if(      
+					equals(#{VarCambiarProspecto}, 'true')       
+					,behavior('MostrarConfirmacionCambiarProspecto')        
+					,behavior('OcultarConfirmacionCambiarProspecto')      
+					)" />
+				<!-- V.30. limpieza de info del prospecto -->
+				<exp key="ExpLimpiezaInformacionProspecto" value="if(     
+					equals(#{VarCambiarProspecto}, 'true')     
+					&amp;&amp;      
+					equals(#{VarConfirmacionCambiarProspecto}, 'Si')      
+					&amp;&amp;     
+					equals(#{VarLimpiadaInformacionProspecto}, '')       
+					,behavior('LimpiarInformacionProspecto')     
+					)" />
+				<!-- V.31. ignorar la limpieza de info del prospecto -->
+				<exp key="ExpIgnoradaLimpiezaInformacionProspecto" value="if(      
+					equals(#{VarCambiarProspecto}, 'true')      
+					&amp;&amp;
+					equals(#{VarConfirmacionCambiarProspecto}, 'No')      
+					&amp;&amp;      
+					equals(#{VarIgnoradaLimpiezaInformacionProspecto}, '')       
+					,behavior('IgnorarLimpiezaInformacionProspecto')      
+					)" />
+                <!-- calculo de meses entre dos fechas formato dd/MM/yyyy -->
+				<!-- V.32. con la fecha que deseamos validar sacamos los 4 digitos del año, esto aplica para el formato dd/MM/yyyy -->
+				<exp key="ExpAnioBienestar" value="toNumber(
+														substring(#{VarfechaModificacionBienestar}, 6, 10)
+														)" />
+                <!-- V.33. con la fecha que deseamos validar sacamos los 2 digitos del mes, esto aplica para el formato dd/MM/yyyy -->
+				<exp key="ExpMesBienestar" value="toNumber(
+														substring(#{VarfechaModificacionBienestar}, 3, 5)
+														)" />
+                <!-- V.34. con la fecha que deseamos validar sacamos los 2 digitos del día, esto aplica para el formato dd/MM/yyyy -->
+				<exp key="ExpDiaBienestar" value="toNumber(
+															substring(#{VarfechaModificacionBienestar}, 0, 2)
+															)" />				
+				<!-- V.35. identificamos la diferencia de años para saber si es del mismo año o de años anteriores o superiores -->
+				<exp key="ExpCalculoAniosBienestar" value="(#{ExpAnioActual} - #{ExpAnioBienestar})" />
+				<!-- V.36. esta validación lo que hace es calcular los meses de diferencia entre dos fechas y no es necesario realizar el proceso de la fecha actual pues ya está definido anteriormente -->
+				<exp key="ExpAniosBienestar" value="switch(  
+														case(            
+																#{ExpMesActual} &gt;  #{ExpMesBienestar}
+																&amp;&amp;
+																#{ExpCalculoAniosBienestar} == 0
+																,(#{ExpCalculoAniosBienestar} * 12) + (#{ExpMesActual} - #{ExpMesBienestar})
+															)
+														,case(         
+																#{ExpMesActual} &lt;  #{ExpMesBienestar}  
+																,((#{ExpCalculoAniosBienestar} * 12) - (#{ExpMesBienestar} - #{ExpMesActual}))
+															 ) 
+														,case(            
+																#{ExpMesActual} &gt;=  #{ExpMesBienestar}
+																&amp;&amp;
+																#{ExpCalculoAniosBienestar} &gt; 0
+																,((#{ExpCalculoAniosBienestar} * 12) - (#{ExpMesBienestar} - #{ExpMesActual}))
+															)
+														,case(       
+																#{ExpMesActual} == #{ExpMesBienestar}
+																&amp;&amp;
+																#{ExpCalculoAniosBienestar} == 0
+																,(#{ExpCalculoAniosBienestar} * 12) + (0)      
+															 )               
+														,default(0)           
+																)" />
+            </expressions>
+        </FormiikExpressionLanguage>
+        <Subform Name="PestDatosGenerales" Caption="Datos Generales">
+            <Field Name="tipoIdentificacionProspecto">
+                <UI>
+                    <ChoiceList />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Tipo de Identificación</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="tipoIdentificacionProspecto">tipoIdentificacionProspecto</Dictionary>
+                </Value>
+                <Items>
+                    <UserCatalog DataSource="CatTipoIdentificacion">
+                        <KeyForField DataDisplay="Val_CatTipoIdentificacion" DataKey="Lla_CatTipoIdentificacion" />
+                    </UserCatalog>
+                </Items>
+                <Validate>
+                    <Required>
+                        <Message>
+                            <Font Style="Warning" />
+                            <Value>
+                                <Text>Requerido</Text>
+                            </Value>
+                        </Message>
+                    </Required>
+                </Validate>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="true" />
+                    <add key="selectleyend" value="true" />
+                    <add key="scanner" value="false" />
+                    <add key="search" value="false" />
+                    <add key="sendInResponse" value="never" />
+                </Settings>
+            </Field> 
+			<!-- configuramos el campo con el tipo de campos a utilizar este ejemplo es con uno de mexico, pero existen validaciones para colombia y perú -->
+			<Field Name="escanearINE">
+                <UI>
+                    <UpdateEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Escanear INE</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text />
+                </Value>
+                <Settings>
+                    <add key="action" value="local_idreader" />
+                    <add key="action_url" value="" />
+                    <add key="timeout" value="90" />
+                    <add key="validateregex" value="false" />
+                </Settings>
+                <Items>
+                    <Text KeyForSave="IdReaderType_INEMexicano" requested="False" />
+                    <Text KeyForSave="IdReaderINE_TextEdit0" requested="False" />
+                    <Text KeyForSave="IdReaderEmision_TextEdit1" requested="False" />
+                    <Text KeyForSave="IdReaderCIC_TextEdit2" requested="False" />
+                    <Text KeyForSave="IdReaderOCR_TextEdit3" requested="False" />
+                    <Text KeyForSave="IdReaderVigencia_TextEdit4" requested="False" />
+                    <Text KeyForSave="IdReaderSexo_TextEdit5" requested="False" />
+                    <Text KeyForSave="IdReaderNacionalidad_TextEdit6" requested="False" />
+                    <Text KeyForSave="IdReaderNombre_TextEdit7" requested="False" />
+                    <Text KeyForSave="IdReaderPrimerApellido_TextEdit88" requested="False" />
+                    <Text KeyForSave="IdReaderSegundoApellido_TextEdit99" requested="False" />
+                    <Text KeyForSave="IdReaderFechaNacimiento_TextEdit10" requested="False" />
+                </Items>
+            </Field>
+			<!-- inicio de los campos en tipo textos ocultos para cargar la información del campo tipo servicios -->
+			<Field Name="IdReaderINE_TextEdit0">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Tipo documento</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderINE_TextEdit0" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="decimals" value="" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+            <Field Name="IdReaderEmision_TextEdit1">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Emisión</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderEmision_TextEdit1" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="decimals" value="" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+            <Field Name="IdReaderCIC_TextEdit2">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>CIC</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderCIC_TextEdit2" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="decimals" value="" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+            <Field Name="IdReaderOCR_TextEdit3">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>OCR</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderOCR_TextEdit3" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="decimals" value="" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+            <Field Name="IdReaderVigencia_TextEdit4">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Vigencia</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderVigencia_TextEdit4" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="decimals" value="" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+            <Field Name="IdReaderSexo_TextEdit5">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Sexo</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderSexo_TextEdit5" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="decimals" value="" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+            <Field Name="IdReaderNacionalidad_TextEdit6">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Nacionalidad</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderNacionalidad_TextEdit6" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="decimals" value="" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+            <Field Name="IdReaderNombre_TextEdit7">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Nombre</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderNombre_TextEdit7" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+            <Field Name="IdReaderPrimerApellido_TextEdit88">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Primer apellido</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderPrimerApellido_TextEdit88" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="decimals" value="" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+            <Field Name="IdReaderSegundoApellido_TextEdit99">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Segundo apellido</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderSegundoApellido_TextEdit99" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="decimals" value="" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+            <Field Name="IdReaderFechaNacimiento_TextEdit10">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Fecha nacimiento</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="IdReaderFechaNacimiento_TextEdit10" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="decimals" value="" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+			<!-- Fin de los campos en tipo textos ocultos para cargar la información del campo tipo servicios -->
+			<Field Name="fechaNacimientoProspecto">
+                <UI>
+                    <DateTimeEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Fecha de nacimiento</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="fechaNacimientoProspecto">fechaNacimientoProspecto</Dictionary>
+                </Value>
+                <Validate>
+                    <Required>
+                        <Message>
+                            <Font Style="Warning" />
+                            <Value>
+                                <Text>Requerido</Text>
+                            </Value>
+                        </Message>
+                    </Required>
+                </Validate>
+                <Settings>
+                    <add key="DateFormat" value="dd/MM/yyyy" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="pickOutside" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="readonly" value="false" />
+                </Settings>
+            </Field>
+            <!-- campo tipo texto abierto con con el setting expressionKey activo para mostrar la expresion de diferencia de años entre dos fechas, se puede ajustar para aplicar las validaciones V.2.5 y V.36. -->
+			<Field Name="edad">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Edad</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="edad" />
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="scanner" value="false" />
+                    <add key="expressionKey" value="ExpEdad" />
+                    <add key="updateEveryCharacter" value="true" />
+                </Settings>
+            </Field>
+			<!-- campo tipo fecha que muestra la fecha actual del sistema eso se cumple con el setting <add key="min" value="+0d" /> <add key="max" value="+0d" />-->
+            <Field Name="fechaActual">
+                <UI>
+                    <DateTimeEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Fecha actual</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="fechaActual">fechaActual</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="DateFormat" value="dd/MM/yyyy" />
+                    <add key="visible" value="false" />
+                    <add key="pickOutside" value="true" />
+                    <add key="min" value="+0d" />
+                    <add key="max" value="+0d" />
+                    <add key="sendInResponse" value="never" />
+                </Settings>
+            </Field>
+			<Field Name="vigenciaProspecto">
+                <UI>
+                    <DateTimeEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Vigencia</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="vigenciaProspecto">vigenciaProspecto</Dictionary>
+                </Value>
+                <Validate>
+                    <Required>
+                        <Message>
+                            <Font Style="Warning" />
+                            <Value>
+                                <Text>Requerido</Text>
+                            </Value>
+                        </Message>
+                    </Required>
+                </Validate>
+                <Settings>
+                    <add key="DateFormat" value="dd/MM/yyyy" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="pickOutside" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="readonly" value="false" />
+                </Settings>
+            </Field>
+			<Field Name="generoProspecto">
+                <UI>
+                    <ChoiceList />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Género</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="generoProspecto">generoProspecto</Dictionary>
+                </Value>
+                <Items>
+                    <UserCatalog DataSource="CatGenero">
+                        <KeyForField DataDisplay="Val_CatGenero" DataKey="Lla_CatGenero" />
+                    </UserCatalog>
+                </Items>
+                <Validate>
+                    <Required>
+                        <Message>
+                            <Font Style="Warning" />
+                            <Value>
+                                <Text>Requerido</Text>
+                            </Value>
+                        </Message>
+                    </Required>
+                </Validate>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="true" />
+                    <add key="selectleyend" value="true" />
+                    <add key="scanner" value="false" />
+                    <add key="search" value="false" />
+                    <add key="sendInResponse" value="never" />
+                </Settings>
+            </Field>
+		</Subform>
+        <Subform Name="PestAlmacenamiento" Caption="Guardar">
+            <Field Name="heaGuardar">
+                <UI>
+                    <Heading />
+                </UI>
+                <Value>
+                    <Text>GUARDAR</Text>
+                </Value>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>GUARDAR</Text>
+                    </Value>
+                </Caption>
+            </Field>
+			<Field Name="ContenedorGuardar">
+                <UI>
+                    <Container />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text />
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text />
+                </Value>
+                <Settings>
+                    <add key="collapsed" value="False" />
+                    <add key="collapseenable" value="False" />
+                    <add key="multiWidgetsPerRow" value="2" />
+                </Settings>
+            </Field>			
+			<!-- se configura el campo con el tipo de envío en este caso por servicio externo-->
+			<Field Name="GuardarFinalProspecto">
+                <UI>
+                    <UpdateEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Guardar</Text>
+                    </Value>
+                </Caption>
+				<Value>
+                    <Text KeyForSave="GuardarFinalProspecto" />
+                </Value>
+                <Items>                    
+					<Text KeyForSave="tipoIdentificacionProspecto" requested="True" />	
+                    <Text KeyForSave="fechaNacimientoProspecto" requested="True" />
+					<Text KeyForSave="vigenciaProspecto" requested="True" />
+                    <Text KeyForSave="generoProspecto" requested="True" />
+                </Items>
+                <Validate>
+                    <Required>
+                        <Message>
+                            <Font Style="Warning" />
+                            <Value>
+                                <Text>Requerido</Text>
+                            </Value>
+                        </Message>
+                    </Required>
+                </Validate>
+                <Settings>
+                    <add key="action" value="ApiProspecto" />
+                    <add key="action_url" value="" />
+                    <add key="timeout" value="90" />
+                    <add key="validateregex" value="false" />
+                    <add key="tries" value="100" />
+                    <add key="specificServiceEndPoint" value="ApiProspecto" />
+                    <add key="config" value="specific" />
+                    <add key="visible" value="true" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="container" value="ContenedorGuardar" />
+                </Settings>
+            </Field>
+			<Field Name="RespuestaConectorEngine">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Respuesta</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="RespuestaConectorEngine">RespuestaConectorEngine</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="multiline" value="true" />
+                    <add key="expressionKey" value="ExpRespuestaConectorEngine" />
+                </Settings>
+            </Field>
+			<Field Name="Engine_Message_prospecto">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Engine_Message_prospecto</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="Engine_Message_prospecto">Engine_Message_prospecto</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="false" />
+                    <add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+                    <add key="numeric" value="false" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="true" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>			
+			<Field Name="heaEditarprospecto">
+                <UI>
+                    <Heading />
+                </UI>
+                <Value>
+                    <Text>EDITAR PROSPECTO</Text>
+                </Value>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>EDITAR PROSPECTO</Text>
+                    </Value>
+                </Caption>
+            </Field>
+			<Field Name="CambiarProspecto">
+				<UI>
+					<CheckEdit />
+				</UI>
+				<Caption>
+					<Font Style="Caption" />
+					<Value>
+						<Text>Editar prospecto</Text>
+					</Value>
+				</Caption>
+				<Value>
+					<Text KeyForSave="CambiarProspecto" />
+				</Value>
+				<Settings>
+					<add key="readonly" value="false" />
+					<add key="visible" value="true" />
+					<add key="showcaption" value="true" />
+					<add key="simplecheck" value="false" />
+					<add key="legendon" value="Editar" />
+					<add key="legendoff" value="Editar" />
+                    <add key="sendInResponse" value="never" />
+				</Settings>
+			</Field>
+			<Field Name="ConfirmacionCambiarProspecto">
+				<UI>
+					<RadioButton />
+				</UI>
+				<Caption>
+					<Font Style="Caption" />
+					<Value>
+						<Text>Se habilitará datos del prospecto, ¿Está seguro(a) de continuar?</Text>
+					</Value>
+				</Caption>
+				<Value>
+					<Dictionary KeyForSave="ConfirmacionCambiarProspecto">ConfirmacionCambiarProspecto</Dictionary>
+				</Value>
+				<Items>
+					<Text>Si</Text>
+					<Text>No</Text>
+				</Items>
+				<Validate>
+					<Required>
+						<Message>
+							<Font Style="Warning" />
+							<Value>
+								<Text>Requerido</Text>
+							</Value>
+						</Message>
+					</Required>
+				</Validate>
+				<Settings>
+					<add key="readonly" value="false" />
+					<add key="visible" value="false" />
+                    <add key="sendInResponse" value="never" />
+				</Settings>
+			</Field>
+			<Field Name="LimpiadaInformacionProspecto">
+				<UI>
+					<TextEdit />
+				</UI>
+				<Caption>
+					<Font Style="Caption" />
+					<Value>
+						<Text>LimpiadaInformacionProspecto</Text>
+					</Value>
+				</Caption>
+				<Value>
+					<Dictionary KeyForSave="LimpiadaInformacionProspecto">LimpiadaInformacionProspecto</Dictionary>
+				</Value>
+				<Settings>
+					<add key="readonly" value="true" />
+					<add key="visible" value="false" />
+					<add key="sendInResponse" value="never" />
+				</Settings>
+			</Field>
+			<Field Name="IgnoradaLimpiezaInformacionProspecto">
+				<UI>
+					<TextEdit />
+				</UI>
+				<Caption>
+					<Font Style="Caption" />
+					<Value>
+						<Text>IgnoradaLimpiezaInformacionProspecto</Text>
+					</Value>
+				</Caption>
+				<Value>
+					<Dictionary KeyForSave="IgnoradaLimpiezaInformacionProspecto">IgnoradaLimpiezaInformacionProspecto</Dictionary>
+				</Value>
+				<Settings>
+					<add key="readonly" value="true" />
+					<add key="visible" value="false" />
+					<add key="sendInResponse" value="never" />
+				</Settings>
+			</Field>
+		</Subform>
+    </Template>
+</XFA>
