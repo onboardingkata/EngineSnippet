@@ -1,0 +1,15 @@
+{
+ "Tenants": {
+  "d5fd24aa-6d6a-4a56-92bb-b29c69143668": {
+   "Url": "https://<ambiente>.sandbox.mambu.com/api",
+   "Usr": "",
+   "Psw": "",
+   "HarcodedParameters": {
+    "Equals": "EQUALS",
+    "FilterSelectionCURP": "_Datos_Personales_Clientes.MEX_CURP",
+    "FilterSelectionRFC": "_Datos_Personales_Clientes.RFC_Clientes",
+    "PreferredLanguage": "SPANISH"
+   }
+  }
+ }
+}
