@@ -12,4 +12,6 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
 
 * [Ejemplo para implementar una estructura simple de datos generales de un prospecto](code/Mobile/EjemploProspecto/)
 
-funcion
+## Bot
+
+* [Ejemplo de funciones de transformacion](code/Bot/Transformaciones/)
