@@ -8,7 +8,9 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
 * [Ejemplo de funcion para utilizar helper Make RequestAsync](code/Engine/EjemploHelperServicio/)
 * [Ejemplo de funcion para obtener valores de campos simples y restringidos](code/Engine/FuncionLecturaValorCampos/)
 * [Función copiar valores de campo entre contenedores](code/Engine//FuncionCopiarValores/)
-* [Función para calcular la Edad](code/Engine//FuncionCalcularEdad/)
+* [Función para calcular la Edad](code/Engine/FuncionCalcularEdad/)
+* [Función para calcular semanas entre fechas](code/Engine/FuncionSemanasFechas/)
+
 
 ## Mobile
 
