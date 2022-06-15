@@ -24,7 +24,17 @@
 				<var key="VarConfirmacionCambiarProspecto" keyForSave="ConfirmacionCambiarProspecto" type="string" />
 				<var key="VarLimpiadaInformacionProspecto" keyForSave="LimpiadaInformacionProspecto" type="string" />
 				<var key="VarIgnoradaLimpiezaInformacionProspecto" keyForSave="IgnoradaLimpiezaInformacionProspecto" type="string" />
-				<var key="VarfechaModificacionBienestar" keyForSave="fechaModificacionBienestar" type="string" />						
+				<var key="VarfechaModificacionBienestar" keyForSave="fechaModificacionBienestar" type="string" />
+                <!--Esta variable obtiene el valor que obtiene al presionar el widget gps "ubica"-->
+                <var key="VarValorUbicacionB" keyForSave="UbicacionB" type="string" />
+				<var key="VarValorUbicacionA" keyForSave="UbicacionA" type="string" />
+                <!--Esta variable obtiene el valor de la Latitud del widget Textedit "lat"-->
+                <var key="VarLatitudA" keyForSave="LatitudA" type="number" />
+                <!--Esta variable obtiene el valor de la Longitud del widget Textedit "lon"-->
+                <var key="VarLongitudA" keyForSave="LongitudA" type="number" />
+				<var key="VarLatitudB" keyForSave="LatitudB" type="number" />
+                <!--Esta variable obtiene el valor de la Longitud del widget Textedit "lon"-->
+                <var key="VarLongitudB" keyForSave="LongitudB" type="number" />				
             </variables>
             <behaviors>
 				<!--Behavios que contiene lo que debe ejecutar despues de cumplir las validaciones -->
@@ -123,6 +133,17 @@
 					<widget keyForSave="LimpiadaInformacionProspecto" value="" />
 					<widget keyForSave="ConfirmacionCambiarProspecto" visible="false" />
 				</behavior>
+				<!-- Validacion Coordenadas -->	
+				<behavior key="resultado1">
+                    <!--Este comportamiento afecta al TextEdit "result" dándole el valor Puede continuar en caso de que las ubicaciones sean iguales y muestra el tab PestAlmacenamiento-->
+                    <widget keyForSave="result" value="'Puede Continuar con Guardar'"></widget>
+                    <tab name="PestAlmacenamiento" visible="true"></tab>
+                </behavior>
+                <behavior key="resultado2">
+                    <!--Este comportamiento afecta al TextEdit "result" dándole el valor No Puede continuar en caso de que las ubicaciones no sean iguales y oculta el tab PestAlmacenamiento-->
+                    <widget keyForSave="result" value="'No puede continuar con Guardar'"></widget>
+                    <tab name="PestAlmacenamiento" visible="false"></tab>
+                </behavior>
             </behaviors>
             <expressions>																	
 				<!--Expresiones donde se cuenta con las validaciones a cumplir -->
@@ -412,6 +433,81 @@
 															 )               
 														,default(0)           
 																)" />
+				<!-- Expresion Coordenadas -->
+                <exp key="ExpCapturaUbicacionB" value="#{VarValorUbicacionB}" />
+				<exp key="ExpCapturaUbicacionA" value="#{VarValorUbicacionA}" />
+                <exp key="ubicacion_obtenida" value="concat(#{ExpLatitudB},'.',#{ExpLongitudB})" />
+                <exp key="ubicacion_original" value="concat(#{ExpLatitudA},'.',#{ExpLongitudA})" />
+                <exp key="compara_ubica" value="if(equals(#{ubicacion_obtenida},
+													#{ubicacion_original})
+													,behavior('resultado1')
+													,behavior('resultado2'))" />							
+				<!-- obtener valores de latitud y longitud ubicación A-->	
+				<exp key="ExpTamanioLatA" value="if(equals(#{VarValorUbicacionA}, '')						
+												, 0, lastIndexOf(#{VarValorUbicacionA}, 'Lat:', length(#{VarValorUbicacionA})) )" /> 
+                <exp key="ExpTamanioUbicacionA" value="length(#{VarValorUbicacionA})" /> 
+                <exp key="ExpLatA" value="if((#{ExpTamanioLatA} &gt; 0) 
+												, substring(#{VarValorUbicacionA}, 0, (#{ExpTamanioLatA})), '')" /> 			
+				<exp key="ExpTopeLatitudA" value="if(equals(#{VarValorUbicacionA}, '')
+												, 0, lastIndexOf(#{VarValorUbicacionA}, 'Lon:', length(#{VarValorUbicacionA})-4) )" /> 
+                <exp key="ExpLatitudA" value="if((#{ExpTopeLatitudA} &gt; 0)
+												, substring(#{VarValorUbicacionA}, (#{ExpTamanioLatA}+4), (#{ExpTopeLatitudA})), '')" />
+				<exp key="ExpTopeLongitudA" value="if(equals(#{VarValorUbicacionA}, '')
+												, 0, lastIndexOf(#{VarValorUbicacionA}, 'Sat:', length(#{VarValorUbicacionA})-4) )" /> 
+                <exp key="ExpLongitudA" value="if((#{ExpTopeLatitudA} &gt; 0)
+												, substring(#{VarValorUbicacionA}, (#{ExpTopeLatitudA}+4), (#{ExpTopeLongitudA})), '')" />				
+				<!-- obtener valores de latitud y longitud ubicaciónB -->
+				<exp key="ExpTamanioLatB" value="if(equals(#{VarValorUbicacionB}, '')						
+												, 0, lastIndexOf(#{VarValorUbicacionB}, 'Lat:', length(#{VarValorUbicacionB})) )" /> 
+                <exp key="ExpTamanioUbicacionB" value="length(#{VarValorUbicacionB})" /> 
+                <exp key="ExpLatB" value="if((#{ExpTamanioLatB} &gt; 0) 
+												, substring(#{VarValorUbicacionB}, 0, (#{ExpTamanioLatB})), '')" /> 			
+				<exp key="ExpTopeLatitudB" value="if(equals(#{VarValorUbicacionB}, '')
+												, 0, lastIndexOf(#{VarValorUbicacionB}, 'Lon:', length(#{VarValorUbicacionB})-4) )" /> 
+                <exp key="ExpLatitudB" value="if((#{ExpTopeLatitudB} &gt; 0)
+												, substring(#{VarValorUbicacionB}, (#{ExpTamanioLatB}+4), (#{ExpTopeLatitudB})), '')" />
+				<exp key="ExpTopeLongitudB" value="if(equals(#{VarValorUbicacionB}, '')
+												, 0, lastIndexOf(#{VarValorUbicacionB}, 'Sat:', length(#{VarValorUbicacionB})-4) )" /> 
+                <exp key="ExpLongitudB" value="if((#{ExpTopeLatitudB} &gt; 0)
+												, substring(#{VarValorUbicacionB}, (#{ExpTopeLatitudB}+4), (#{ExpTopeLongitudB})), '')" />				
+				<!-- calcular distancia -->				
+				<exp key="ExpValorRadio" value="6378.137" />									
+				<exp key="ExpValorPI" value="3.14159265" />
+				<exp key="ExpPiCientoochenta" value="3.14159265" />
+				<exp key="ExpDlat" value="((toNumber(#{ExpLatitudB}) * (#{ExpValorPI} / 180))
+											-
+										   (toNumber(#{ExpLatitudA}) * (#{ExpValorPI} / 180))
+										   ) " />										   
+				<exp key="ExpDlon" value="((toNumber(#{ExpLongitudB}) * (#{ExpValorPI} / 180))
+											-
+										   (toNumber(#{ExpLongitudA}) * (#{ExpValorPI} / 180))
+										   )" />   
+				
+				<exp key="ExpParte1" value="(toNumber(#{ExpLatitudA}) * (#{ExpValorPI} / 180))" />
+				<exp key="ExpParte2" value="(toNumber(#{ExpLatitudB}) * (#{ExpValorPI} / 180))" />							
+				
+			
+				<exp key="ExpA" value="((#{ExpSenoParte1}*#{ExpSenoParte1})
+											+ (#{ExpCosParte1}) * (#{ExpCosParte2}) 
+											* (#{ExpSenoParte2} * #{ExpSenoParte2}))" />								
+											
+				<exp key="ExpSenoParte1" value="(sin(#{ExpOp1A}))" />
+				<exp key="ExpCosParte1" value="(cos(#{ExpParte1}))" />
+				<exp key="ExpCosParte2" value="(cos(#{ExpParte2}))" />
+				<exp key="ExpSenoParte2" value="(sin(#{ExpOp2A}))" />
+				<exp key="ExpOp1A" value="#{ExpDlat}/2" />
+				<exp key="ExpOp2A" value="#{ExpDlon}/2" />
+				<exp key="ExpSQRTa" value="sqrt(#{ExpA})" />
+				<exp key="ExpSQRT1a" value="sqrt(1 - #{ExpA})" />	
+				
+				<exp key="ExpParteC" value="atan2(#{ExpSQRTa},#{ExpSQRT1a})" />	
+				<exp key="ExpParteD" value="2*(#{ExpParteC})" />
+				<exp key="ExpParteE" value="#{ExpValorRadio} * #{ExpParteD}" />
+				<exp key="ExpDistancia" value="#{ExpParteE} * 1000" />
+				
+		<exp key="ExpBasePotenciaDenominadorRecomendado" value="(1 + #{ExpCalculoTasaRefRecomendada})" />
+				<exp key="ExpExponentePotenciaRecomendado" value="(#{VarNumeroCuotas}-toNumber(#{ExpAsignaValorPeriodoGracia}))" />
+				<exp key="ExpCalculoFactorRecomendado" value="pow(#{ExpBasePotenciaDenominadorRecomendado},abs(#{ExpExponentePotenciaRecomendado})) " />				
             </expressions>
         </FormiikExpressionLanguage>
         <Subform Name="PestDatosGenerales" Caption="Datos Generales">
@@ -895,6 +991,277 @@
                     <add key="scanner" value="false" />
                     <add key="search" value="false" />
                     <add key="sendInResponse" value="never" />
+                </Settings>
+            </Field>
+		</Subform>
+		<Subform Name="PestCoordenadas" Caption="Coordenadas">
+		    <Field Name="UbicacionA">
+                <UI>
+                    <GpsEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Geoubicación A</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="UbicacionA" />
+                </Value>
+                <Settings>
+                    <add key="timeout" value="50" />
+                    <add key="agps" value="true" />
+                    <add key="isValid" value="false" />
+                    <add key="firstValid" value="false" />
+                    <add key="levelRequired" value="MEDIUM" />
+                    <add key="numberTry" value="5" />
+                    <add key="sendInResponse" value="visible" />
+                    <add key="automatic" value="true" />
+                    <add key="version" value="2" />
+                </Settings>
+            </Field>
+			<Field Name="LatitudA">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Latitud</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="LatitudA">LatitudA</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+					<add key="expressionKey" value="ExpLatitudA" />
+                </Settings>
+            </Field>
+            <Field Name="LongitudA">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Longitud</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="LongitudA">LongitudA</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+					<add key="expressionKey" value="ExpLongitudA" />
+                </Settings>
+            </Field>
+			<Field Name="UbicacionB">
+                <UI>
+                    <GpsEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Geoubicación B</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Text KeyForSave="UbicacionB" />
+                </Value>
+                <Settings>
+                    <add key="timeout" value="50" />
+                    <add key="agps" value="true" />
+                    <add key="isValid" value="false" />
+                    <add key="firstValid" value="false" />
+                    <add key="levelRequired" value="MEDIUM" />
+                    <add key="numberTry" value="5" />
+                    <add key="sendInResponse" value="visible" />
+                    <add key="automatic" value="true" />
+                    <add key="version" value="2" />
+                </Settings>
+            </Field>
+			<Field Name="LatitudB">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Latitud</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="LatitudB">LatitudB</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+					<add key="expressionKey" value="ExpLatitudB" />
+                </Settings>
+            </Field>
+            <Field Name="LongitudB">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Longitud</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="LongitudB">LongitudB</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+					<add key="expressionKey" value="ExpLongitudB" />
+                </Settings>
+            </Field>
+			<Field Name="DireccionAcompleta">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Dirección A</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="DireccionAcompleta">DireccionAcompleta</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+					<add key="expressionKey" value="ExpCapturaUbicacionA" />
+                </Settings>
+            </Field>
+			<Field Name="DireccionBcompleta">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Dirección B</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="DireccionBcompleta">DireccionBcompleta</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+					<add key="expressionKey" value="ExpCapturaUbicacionB" />
+                </Settings>
+            </Field>
+			<Field Name="UbicacionObtenida">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>ubicación obtenida</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="UbicacionObtenida">UbicacionObtenida</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+					<add key="expressionKey" value="ubicacion_obtenida" />
+                </Settings>
+            </Field>
+            <Field Name="UbicacionAsignada">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>ubicación asignada</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="UbicacionAsignada">UbicacionAsignada</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+					<add key="expressionKey" value="ubicacion_original" />
+                </Settings>
+            </Field>
+			<Field Name="result">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Resultado</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="result">result</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+                </Settings>
+            </Field>
+			<Field Name="resultado">
+                <UI>
+                    <TextEdit />
+                </UI>
+                <Caption>
+                    <Font Style="Caption" />
+                    <Value>
+                        <Text>Distancia entre coordenadas</Text>
+                    </Value>
+                </Caption>
+                <Value>
+                    <Dictionary KeyForSave="resultado">resultado</Dictionary>
+                </Value>
+                <Settings>
+                    <add key="readonly" value="true" />
+                    <add key="visible" value="true" />
+                    <add key="password" value="false" />
+                    <add key="multiline" value="false" />
+                    <add key="scanner" value="false" />
+					<add key="expressionKey" value="ExpDistancia" />
                 </Settings>
             </Field>
 		</Subform>
