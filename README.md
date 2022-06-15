@@ -7,6 +7,8 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
 * [Ejemplo de funcion de cambio de estados](code/Engine/EjemploCambioEstado/)
 * [Ejemplo de funcion para utilizar helper Make RequestAsync](code/Engine/EjemploHelperServicio/)
 * [Ejemplo de funcion para obtener valores de campos simples y restringidos](code/Engine/FuncionLecturaValorCampos/)
+* [Función copiar valores de campo entre contenedores](code/Engine//FuncionCopiarValores/)
+* [Función para calcular la Edad](code/Engine//FuncionCopiarValores/)
 
 ## Mobile
 
