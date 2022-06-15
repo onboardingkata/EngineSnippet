@@ -7,4 +7,5 @@ El archivo [Prospecto.xml](Prospecto.xml) es un ejemplo de implementación para 
 * Validación de la edad en base a la fecha de nacimiento
 * Validación de meses transcurridos en base a una fecha seleccionada y la fecha actual del dispositivo
 * Calcular la diferencia de distancia a partir de dos coordenadas
+
 Autor: Romario Javier Fajardo Amaya
