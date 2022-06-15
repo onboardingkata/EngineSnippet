@@ -15,4 +15,10 @@ Para usar este codigo copia y pega en tu implementación y utilizalo de la sigui
 * El cuarto parametro son los headers, en caso de que no utilices manda un objeto vacio {}
 * El quito parametro es el metodo, por defecto tiene POST pero puedes utilizar PUT y GET entre otros.
 
+La funcion se utiliza de la siguietne forma
+```
+let respuesta= await llamarServicio("ID_CONTENEDOR", "https://www.dominio.com/api", { valorUno: 1}, { token: "abc"}, "POST");
+//la respuesta en forma de objeto se almacenara en la variable respuesta
+```
+
 Autor: Norberto Agustin Marcos
