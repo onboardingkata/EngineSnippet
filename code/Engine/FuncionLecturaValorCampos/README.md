@@ -1,4 +1,4 @@
-# Ejemplo de una función de cambio de estado
+# Función para obtener valores de campos simples y restringidos
 
 El ejemplo del archivo [FuncionObtenerValorCampo.js](FuncionObtenerValorCampo.js) es una función para leer campos de tipo de dato simple y restringido.
 

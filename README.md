@@ -15,6 +15,10 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
     - Agregar Orden
     - Cancelar Orden
     - Actualizar una orden
+* [Función escapar valores](code/Engine/FuncionEscaparValores/)
+* [Función validar campo BLOB](code/Engine/FuncionValidarBlobEngine/)
+
+
 
 ## Mobile
 
