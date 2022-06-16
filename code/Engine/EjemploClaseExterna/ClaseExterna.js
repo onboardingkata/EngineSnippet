@@ -1,3 +1,7 @@
+//Descripcion: Ejemplo de una clase externa
+
+//En caso de no hacer una llamada con referencia por medio del apply se tienen que definir los helpers que vamos a utilizar.
+
 //const externalCatalogHelper = require('../externalCatalogHelper');
 //const notificationHelper = require('../notificationsHelper');
 //const service = require('../ServiceUtils');
@@ -31,6 +35,6 @@ class ClaseExterna {
 
 
 }
-
+//la clase tiene que ser exportada para poder utilizarla.
 module.exports = ClaseExterna;
 
