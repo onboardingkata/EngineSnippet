@@ -18,7 +18,7 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
 * [Función escapar valores](code/Engine/FuncionEscaparValores/)
 * [Función validar campo BLOB](code/Engine/FuncionValidarBlobEngine/)
 * [Función calcular Mimetype](code/Engine/FuncionCalcularMimeType/)
-
+* [Función formato fecha Mambu](code/Engine/FuncionFormatoFechaMambu/)
 
 
 ## Mobile
