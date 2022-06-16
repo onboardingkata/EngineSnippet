@@ -28,7 +28,7 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
     - calcular fecha finalización del credito
     - Funcion Agregar Dias
     - Función es Dia de la semana o festivo
-
+* [Función Almacenar base64 en Storage](code/Engine/FuncionGuardarBase64Storage/)
 
 ## Mobile
 
