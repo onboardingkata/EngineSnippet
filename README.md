@@ -16,6 +16,7 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
     - Cancelar Orden
     - Actualizar una orden
 * [Función escapar valores](code/Engine/FuncionEscaparValores/)
+* [Función quitar escapar valores](code/Engine/FuncionUnEscapeValores/)
 * [Función validar campo BLOB](code/Engine/FuncionValidarBlobEngine/)
 * [Función calcular Mimetype](code/Engine/FuncionCalcularMimeType/)
 * [Función formato fecha Mambu](code/Engine/FuncionFormatoFechaMambu/)
