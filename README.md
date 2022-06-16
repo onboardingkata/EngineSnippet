@@ -24,6 +24,10 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
 * [Función formato fecha Mambu](code/Engine/FuncionFormatoFechaMambu/)
 * [Ejemplo de Clase Externa](code/Engine/EjemploClaseExterna/)
 * [Header Function para obtener el estado de la solicitud](code/Engine/HeaderFunctionEstado/)
+* [Función Calcular Fecha Finalización Crédito](code/Engine/FuncionFechaFinalizacionCredito/)
+    - calcular fecha finalización del credito
+    - Funcion Agregar Dias
+    - Función es Dia de la semana o festivo
 
 
 ## Mobile
