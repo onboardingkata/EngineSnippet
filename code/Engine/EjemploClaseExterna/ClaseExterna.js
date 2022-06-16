@@ -34,10 +34,3 @@ class ClaseExterna {
 
 module.exports = ClaseExterna;
 
-var ClaseExterna = require('./externals/ClaseExterna');
-var claseExterna = new ClaseExterna();
-//esta llamada es directamente la función y la función no requiere de utilizar helpers referenciados
-claseExterna.llamarLog("Producto","01010101","nombreContenedor","Mensaje para el log",{});
-//para llamar un servicio con las referencias de los helpers se utiliza env como primer parametro y un segundo parametro de tipo arreglo con los parametros de la función utilizando el apply
-await claseExterna.llamarServicioReferenciado.apply(env, ["producto", "metodologia"]);
-                    
