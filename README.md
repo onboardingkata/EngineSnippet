@@ -17,6 +17,7 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
     - Actualizar una orden
 * [Función escapar valores](code/Engine/FuncionEscaparValores/)
 * [Función validar campo BLOB](code/Engine/FuncionValidarBlobEngine/)
+* [Función calcular Mimetype](code/Engine/FuncionCalcularMimeType/)
 
 
 
