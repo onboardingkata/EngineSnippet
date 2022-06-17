@@ -49,3 +49,7 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
     - Buscar Grupo
     - Crear Cliente
     - Crear Grupo
+
+## Desarrollo en C#
+
+* [Clase para consumir servicios REST](code/Generales/FuncionesConexionesREST/)
