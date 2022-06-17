@@ -1,0 +1,142 @@
+<FormiikExpressionLanguage>
+    <variables>
+        <var key="VarFechaActual" keyForSave="FechaActual" type="string"/>
+        <var key="VarFechaNacimiento" keyForSave="fechaNacimiento" type="string"/>
+        <var key="VarValidadorEdad" keyForSave="ValidadorEdad" type="string"/>
+    </variables>
+    <expressions>
+        <!-- Calculo edad -->
+        <exp key="ExpAñoNacimiento" value="toNumber(substring(#{VarFechaNacimiento}, 6, 10))"/>
+        <exp key="ExpMesNacimiento" value="toNumber(substring(#{VarFechaNacimiento}, 3, 5))"/>
+        <exp key="ExpDiaNacimiento" value="toNumber(substring(#{VarFechaNacimiento}, 0, 2))"/>
+        <exp key="ExpAñoActual" value="toNumber(substring(#{VarFechaActual}, 6, 10))"/>
+        <exp key="ExpMesActual" value="toNumber(substring(#{VarFechaActual}, 3, 5))"/>
+        <exp key="ExpDiaActual" value="toNumber(substring(#{VarFechaActual}, 0, 2))"/>
+        <exp key="ExpEdad" value="switch( case(#{ExpMesNacimiento} &lt;#{ExpMesActual},#{ExpAñoActual} - #{ExpAñoNacimiento}), case(#{ExpMesNacimiento} &gt;#{ExpMesActual},#{ExpAñoActual} -#{ExpAñoNacimiento} - 1), case((#{ExpMesNacimiento} == #{ExpMesActual})&amp;&amp;(#{ExpDiaActual} &lt;#{ExpDiaNacimiento}),floor(#{ExpAñoActual} -#{ExpAñoNacimiento} -1)), case((#{ExpMesNacimiento} == #{ExpMesActual})&amp;&amp;(#{ExpDiaActual} &gt;= #{ExpDiaNacimiento}),#{ExpAñoActual} -#{ExpAñoNacimiento}), default(0) )"/>
+        <!-- Validación de edad minima permitida -->
+        <exp key="ExpValidadorEdad" value="if( ( (#{ExpEdad} &gt; 99) || (#{ExpEdad} &lt; 18) ) ,behavior('MostrarValidadorEdad') ,behavior('OcultarValidadorEdad') )"/>
+        <exp key="ExpEvitarSeleccionValidadorEdad" value="if( equals(#{VarValidadorEdad},'true') ,behavior('DeseleccionarValidadorEdad') )"/>
+    </expressions>
+    <behaviors>
+        <behavior key="MostrarValidadorEdad">
+            <widget keyForSave="ValidadorEdad" visible="true"/>
+        </behavior>
+        <behavior key="OcultarValidadorEdad">
+            <widget keyForSave="ValidadorEdad" visible="false"/>
+        </behavior>
+        <behavior key="DeseleccionarValidadorEdad">
+            <widget keyForSave="ValidadorEdad" value="''"/>
+        </behavior>
+    </behaviors>
+</FormiikExpressionLanguage>
+<Subform Name="tab" Caption="Pestaña">
+    <Field Name="fechaActual">
+        <UI>
+            <DateTimeEdit/>
+        </UI>
+        <Caption>
+            <Font Style="Caption"/>
+            <Value>
+                <Text>Fecha actual</Text>
+            </Value>
+        </Caption>
+        <Value>
+            <Dictionary KeyForSave="fechaActual">fechaActual</Dictionary>
+        </Value>
+        <Settings>
+            <add key="min" value="+0d"/>
+            <add key="max" value="+0d"/>
+            <add key="DateFormat" value="dd/MM/yyyy"/>
+            <add key="sendInResponse" value="never"/>
+            <add key="visible" value="false"/>
+            <add key="pickOutside" value="false"/>
+        </Settings>
+    </Field>
+    <Field Name="fechaNacimiento">
+        <UI>
+            <DateTimeEdit/>
+        </UI>
+        <Caption>
+            <Font Style="Caption"/>
+            <Value>
+                <Text>Fecha de nacimiento</Text>
+            </Value>
+        </Caption>
+        <Value>
+            <Dictionary KeyForSave="fechaNacimiento">fechaNacimiento</Dictionary>
+        </Value>
+        <Settings>
+            <add key="DateFormat" value="dd/MM/yyyy"/>
+            <add key="sendInResponse" value="visible"/>
+            <add key="visible" value="true"/>
+            <add key="pickOutside" value="true"/>
+        </Settings>
+        <Validate>
+            <Required>
+                <Message>
+                    <Font Style="Warning"/>
+                    <Value>
+                        <Text>Requerido</Text>
+                    </Value>
+                </Message>
+            </Required>
+        </Validate>
+    </Field>
+    <Field Name="edad">
+        <UI>
+            <TextEdit/>
+        </UI>
+        <Caption>
+            <Font Style="Caption"/>
+            <Value>
+                <Text>Edad</Text>
+            </Value>
+        </Caption>
+        <Value>
+            <Dictionary KeyForSave="edad">edad</Dictionary>
+        </Value>
+        <Settings>
+            <add key="readonly" value="true"/>
+            <add key="visible" value="true"/>
+            <add key="sendInResponse" value="visible"/>
+            <add key="decimals" value=""/>
+            <add key="numeric" value="true"/>
+            <add key="password" value="false"/>
+            <add key="multiline" value="true"/>
+            <add key="scanner" value="false"/>
+            <add key="expressionKey" value="ExpEdad"/>
+        </Settings>
+    </Field>
+    <Field Name="ValidadorEdad">
+        <UI>
+            <CheckButton/>
+        </UI>
+        <Caption>
+            <Font Style="Caption"/>
+            <Value>
+                <Text>Advertencia:</Text>
+            </Value>
+        </Caption>
+        <Value>
+            <Dictionary KeyForSave="ValidadorEdad">ValidadorEdad</Dictionary>
+        </Value>
+        <Items>
+            <Text>Cliente menor de edad, no se puede continuar el proceso. Verificar.</Text>
+        </Items>
+        <Validate>
+            <Required>
+                <Message>
+                    <Font Style="Warning"/>
+                    <Value>
+                        <Text>Requerido</Text>
+                    </Value>
+                </Message>
+            </Required>
+        </Validate>
+        <Settings>
+            <add key="readonly" value="false"/>
+            <add key="visible" value="false"/>
+            <add key="sendInResponse" value="never"/>
+        </Settings>
+    </Field>
+</Subform>

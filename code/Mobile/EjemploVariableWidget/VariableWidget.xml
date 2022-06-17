@@ -1,0 +1,34 @@
+<FormiikExpressionLanguage>
+    <variables>
+        <var key="VarOtrosGastosComercio" keyForSave="otrosGastosComercio" type="number"/>
+        <var key="VarOtrosGastosServicios" keyForSave="otrosGastosServicios" type="number"/>
+    </variables>
+    <expressions>
+        <exp key="expOtrosG" value="((#{VarOtrosGastosComercio})+(#{VarOtrosGastosServicios}))"/>
+    </expressions>
+</FormiikExpressionLanguage>
+<Subform Name="tab" Caption="Pestaña">
+    <Field Name="otrosG">
+        <UI>
+            <TextEdit/>
+        </UI>
+        <Caption>
+            <Font Style="Caption"/>
+            <Value>
+                <Text>otros Gastos</Text>
+            </Value>
+        </Caption>
+        <Value>
+            <Dictionary KeyForSave="otrosG">otrosG</Dictionary>
+        </Value>
+        <Settings>
+            <add key="readonly" value="true"/>
+            <add key="visible" value="false"/>
+            <add key="sendInResponse" value="visible"/>
+            <add key="decimals" value=""/>
+            <add key="numeric" value="true"/>
+            <add key="currency" value="S/"/>
+            <add key="expressionKey" value="expOtrosG"/>
+        </Settings>
+    </Field>
+</Subform>

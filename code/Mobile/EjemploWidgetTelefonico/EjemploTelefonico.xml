@@ -1,0 +1,63 @@
+<FormiikExpressionLanguage>
+    <variables>
+        <var key="varTelefonoConyuge" keyForSave="telefonoConyuge" type="string"/>
+    </variables>
+    <expressions>
+        <exp key="expTelefonoConyuge" value="if(equals(#{varTelefonoConyuge}, ''), behavior('bh_quitaLLamarConyuge'), behavior('bh_asignaLLamarConyuge'))"/>
+    </expressions>
+    <behaviors>
+        <behavior key="bh_quitaLLamarConyuge">
+            <widget keyForSave="telefonoConyuge" visible="false"/>
+            <widget keyForSave="llamarConyuge" value="" visible="false"/>
+        </behavior>
+        <behavior key="bh_asignaLLamarConyuge">
+            <widget keyForSave="telefonoConyuge" visible="true"/>
+            <widget keyForSave="llamarConyuge" value="#{varTelefonoConyuge}" visible="true"/>
+        </behavior>
+    </behaviors>
+</FormiikExpressionLanguage>
+<Subform Name="tab" Caption="Pestaña">
+    <Field Name="telefonoConyuge">
+        <UI>
+            <TextEdit/>
+        </UI>
+        <Caption>
+            <Font Style="Caption"/>
+            <Value>
+                <Text>Teléfono 1</Text>
+            </Value>
+        </Caption>
+        <Value>
+            <Dictionary KeyForSave="telefonoConyuge">telefonoConyuge</Dictionary>
+        </Value>
+        <Settings>
+            <add key="readonly" value="true"/>
+            <add key="visible" value="true"/>
+            <add key="sendInResponse" value="never"/>
+            <add key="decimals" value=""/>
+            <add key="numeric" value="true"/>
+            <add key="password" value="false"/>
+            <add key="multiline" value="false"/>
+            <add key="scanner" value="false"/>          
+        </Settings>
+    </Field>
+    <Field Name="llamarConyuge">
+        <UI>
+            <PhoneCall/>
+        </UI>
+        <Caption>
+            <Font Style="Caption"/>
+            <Value>
+                <Text>Llamar</Text>
+            </Value>
+        </Caption>
+        <Value>
+            <Dictionary KeyForSave="llamarConyuge">llamarConyuge</Dictionary>
+        </Value>
+        <Settings>
+            <add key="number" value=""/>
+            <add key="display" value="Llamar"/>
+            <add key="sendInResponse" value="never"/>
+        </Settings>
+    </Field>
+</Subform>

@@ -37,6 +37,10 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
 ## Mobile
 
 * [Ejemplo para implementar una estructura simple de datos generales de un prospecto](code/Mobile/EjemploProspecto/)
+* [Ejemplo de uso de variables](code/Mobile/EjemploVariables/)
+* [Operar variables en una expresión y asignarla en un widget](code/Mobile/EjemploVariableWidget/)
+* [Asociar widget de llamada a número telefónico](code/Mobile/EjemploWidgetTelefonico/)
+
 
 ## Bot
 
