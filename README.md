@@ -53,3 +53,5 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
 ## Desarrollo en C#
 
 * [Clase para consumir servicios REST](code/Generales/FuncionesConexionesREST/)
+* [Funciones para obtener propiedades de objetos de tipo JSON](code/Generales/FuncionesJSON/)
+* [Funcion para convertir un PDF en Imagen y cambiar orientación vertical](code/Generales/FuncionesJSON/)
