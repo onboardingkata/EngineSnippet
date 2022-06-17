@@ -1,6 +1,6 @@
-# Funciones de consumo de servicios REST utilizando metodo GET en C#
+# Funciones de consumo de servicios REST en C#
 
-El archivo [ConexionServiciosRest.cs](ConexionServiciosRest.cs) cuenta con una clase que nos permite consumir servicios REST con el metodo GET, la función esta construida en C#.
+El archivo [ConexionServiciosRest.cs](ConexionServiciosRest.cs) cuenta con una clase que nos permite consumir servicios REST, la función esta construida en C#.
 
 Las funciones que cuenta la case son las siguientes:
 
