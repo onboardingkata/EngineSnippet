@@ -35,6 +35,7 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
 * [Función para formato moneda](code/Engine/FuncionFormatoMoneda/)
 * [Función para obtener valor de un atributo](code/Engine/FuncionObtenerPropiedad/)
 * [Función para crear vista HTML a partir de un arreglo de datos](code/Engine/FuncionCrearVistaHtml/)
+* [Función para consultar un servicio que retorne Binario y guardarlo en el Storage de Engine](code/Engine/FuncionDescargarGuardarArchivo/)
 
 ## Capa de servicios
 
