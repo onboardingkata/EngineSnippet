@@ -34,8 +34,15 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
 * [Función para copiar las propiedades de un objeto a otro](code/Engine/FuncionFusionObjetos/)
 * [Función para formato moneda](code/Engine/FuncionFormatoMoneda/)
 * [Función para obtener valor de un atributo](code/Engine/FuncionObtenerPropiedad/)
+* [Función para crear vista HTML a partir de un arreglo de datos](code/Engine/FuncionCrearVistaHtml/)
 
+## Capa de servicios
 
+* [Integracion con Mambu](code/CapaServicios/IntegracionMambu/)
+    - Buscar Cliente
+    - Buscar Grupo
+    - Crear Cliente
+    - Crear Grupo
 
 ## Mobile
 
@@ -51,14 +58,6 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
     - Transformación de una respuesta completa
     - Transformación de ciertos elementos
     - Guardar en contexto el token de Engine
-
-## Capa de servicios
-
-* [Integracion con Mambu](code/CapaServicios/IntegracionMambu/)
-    - Buscar Cliente
-    - Buscar Grupo
-    - Crear Cliente
-    - Crear Grupo
 
 ## Herramientas Engine
 
