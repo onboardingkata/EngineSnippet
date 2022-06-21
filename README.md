@@ -32,6 +32,9 @@ El presente repositorio cuenta con ejemplos de codigos reutilizables para el are
 * [Función obtener segundos entre fechas](code/Engine/FuncionSegundosEntreFechas/)
 * [Función para convertir ruta en un visor HTML](code/Engine/FuncionRutaaVisor/)
 * [Función para copiar las propiedades de un objeto a otro](code/Engine/FuncionFusionObjetos/)
+* [Función para formato moneda](code/Engine/FuncionFormatoMoneda/)
+* [Función para obtener valor de un atributo](code/Engine/FuncionObtenerPropiedad/)
+
 
 
 ## Mobile
