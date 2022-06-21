@@ -19,7 +19,20 @@ Esta API realiza una busqueda por medio de un RFC o CURP para identificar si el 
 
 La entrada a recibir para utilizar esta api es la siguiente
 ```
-//pendiente
+{
+  "filterCriteria": [
+    {
+      "field": "_Datos_Personales_Clientes.MEX_CURP",
+      "operator": "EQUALS",
+      "value": "XAXA820828FSDFFSF9"
+    },
+    {
+      "field": "_Datos_Personales_Clientes.RFC_Clientes",
+      "operator": "EQUALS",
+      "value": "XAXA820828"
+    }
+  ]
+}
 ```
 
 ## Buscar Grupo
@@ -28,7 +41,20 @@ Esta API realiza una busqueda por medio de nombre del grupo para identificar si 
 
 La entrada a recibir para utilizar esta api es la siguiente
 ```
-//pendiente
+{
+    "filterCriteria": [
+        {
+            "field": "branchKey",
+            "operator": "EQUALS",
+            "value": "8a818f6f66554434016656382a9030f3"
+        },
+        {
+            "field": "groupName",
+            "operator": "EQUALS",
+            "value": "GRUPO NUEVO"
+        }
+    ]
+}
 ```
 
 ## Crear Cliente
@@ -37,7 +63,27 @@ Esta API permite realizar el registro de un nuevo cliente en Mambu.
 
 La entrada a recibir para utilizar esta api es la siguiente
 ```
-//pendiente
+{
+    "firstName": "Nadia Maria",
+    "lastName": "Garcia",
+    "middleName": "Alonzo",
+    "homePhone": "5511223344",
+    "mobilePhone": "5511223344",
+    "preferredLanguage": "SPANISH",
+    "birthDate": "2021-08-03",
+    "gender": "FEMALE",
+    "notes": "",
+    "assignedBranchKey": "8a818e67593845350159464e713a71d3",
+    "assignedCentreKey": "8a818f9c771fc295017721125c6e46a5",
+    "assignedUserKey": "8a818f577840ceb5017843f487cd6f6c",
+    "clientRoleKey": "8a18257a4d07a80a014d0998962e74ec",
+    "idDocuments": [
+        {
+            "documentType": "INE",
+            "documentId": "131313"
+        }
+    ]
+}
 ```
 
 ## Crear Grupo
@@ -46,7 +92,20 @@ Esta API permite realizar el registro de un nuevo grupo en mambu.
 
 La entrada a recibir para utilizar esta api es la siguiente
 ```
-//pendiente
+{
+    "groupName": "Grupo Postman",
+    "notes": "",
+    "assignedUserKey": "8a818f577840ceb5017843f487cd6f6c",
+    "assignedBranchKey": "8a818e67593845350159464e713a71d3",
+    "assignedCentreKey": "8a818f9c771fc295017721125c6e46a5",
+    "emailAddress": "",
+    "mobilePhone": "",
+    "homePhone": "",
+    "preferredLanguage": "SPANISH",
+    "groupRoleKey": "8a18257a4d07a80a014d0998972b74ed",
+    "addresses": [],
+    "groupMembers": []
+}
 ```
 
 
